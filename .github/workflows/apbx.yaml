@@ -6,6 +6,7 @@ on:
       - "src/**"
       - "**/*.yaml"
       - "**/*.yml"
+  workflow_dispatch:
 
 env:
   SXSC_REPO: "https://github.com/Atlas-OS/sxsc"
@@ -19,7 +20,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: ${{ github.ref }}
-          token: ${{ secrets.RUNNER_SECRET }}
+          
 
       - name: Validate YAML files
         run: 'yamllint -d "{extends: relaxed, rules: {empty-lines: disable, line-length: disable, new-line-at-end-of-file: disable, trailing-spaces: disable, new-lines: {type: platform}}}" .'
